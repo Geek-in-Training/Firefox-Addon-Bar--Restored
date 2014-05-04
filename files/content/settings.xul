@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE vbox SYSTEM "chrome://GiT-addonbar/locale/settings.dtd">
+
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <setting pref="extensions.GiTAddonBar.compactMode" type="bool" title="&compactMode;"/>
+</vbox>

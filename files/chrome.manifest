@@ -1,0 +1,16 @@
+content  GiT-addonbar         content/
+skin     GiT-addonbar         classic/1.0 skin/linux/ os=Linux
+skin     GiT-addonbar         classic/1.0 skin/mac/ os=Darwin
+skin     GiT-addonbar         classic/1.0 skin/win/ os=WINNT
+skin     GiT-addonbar-global  classic/1.0 skin/global/
+skin     GiT-addonbar-icons   classic/1.0 skin/icons/
+locale   GiT-addonbar         en-US locale/en-US/
+locale   GiT-addonbar         bg-BG locale/bg-BG/
+locale   GiT-addonbar         de locale/de/
+locale   GiT-addonbar         fr locale/fr/
+locale   GiT-addonbar         nl locale/nl/
+locale   GiT-addonbar         pl locale/pl/
+locale   GiT-addonbar         ru locale/ru/
+locale   GiT-addonbar         sr locale/sr/
+locale   GiT-addonbar         tr locale/tr/
+locale   GiT-addonbar         zh-CN locale/zh-CN/

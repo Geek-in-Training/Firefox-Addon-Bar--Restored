@@ -1,0 +1,139 @@
+#GiT-addon-bar {
+	padding: 0px;
+	-moz-box-ordinal-group: 100000;
+}
+
+#GiT-addon-bar #GiT-addon-bar-toggle-button {
+	-moz-appearance: none;
+	width: 22px;
+	background-image: -moz-image-rect(url("chrome://global/skin/icons/close.png"), 0, 16, 16, 0);
+	  -moz-image-region: rect(0, 64px, 16px, 48px);
+	background-position: center center;
+	background-repeat: no-repeat;
+	border: none;
+}
+
+#GiT-addon-bar #GiT-addon-bar-toggle-button:hover {
+  background-image: -moz-image-rect(url("chrome://global/skin/icons/close.png"), 0, 32, 16, 16);
+}
+
+#GiT-addon-bar #GiT-addon-bar-toggle-button:hover:active {
+  background-image: -moz-image-rect(url("chrome://global/skin/icons/close.png"), 0, 48, 16, 32);
+}
+
+#GiT-addon-bar-toggle-button[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #GiT-addon-bar-toggle-button {
+	list-style-image: url("chrome://GiT-addonbar-icons/skin/toggle32.png");
+}
+
+toolbar:not([id="GiT-addon-bar"]) #GiT-addon-bar-toggle-button {
+	list-style-image: url("chrome://GiT-addonbar-icons/skin/toggle.png");
+}
+
+#GiT-status-bar-container {
+	margin: 1px 0px;
+}
+
+#status-bar > statusbarpanel {
+	border-width: 0;
+	-moz-appearance: none;
+}
+
+toolbarspring[cui-areatype="menu-panel"],
+toolbarspacer[cui-areatype="menu-panel"] {
+	outline: rgba(0,0,0,0.2) solid 1px;
+	outline-offset: 0px;
+	-moz-outline-radius: 5px;
+	-moz-appearance: none;
+	-moz-box-orient: vertical;
+	border-radius: 5px;
+	background-color: rgba(255,255,255,.8);
+	border: solid 6px rgba(0,0,0,.04);
+}
+
+#nav-bar toolbarspring {
+	min-width: 55px;
+}
+
+toolbarspring[cui-areatype="menu-panel"] {
+	min-height: 18px;
+	width: calc(22em - 0.1px);
+}
+
+toolbarseparator[cui-areatype="menu-panel"] {
+	-moz-appearance: none !important;
+	min-height: 9px;
+	padding: 4px;
+	width: calc(22em - 0.1px);
+	border: none;
+	background: ThreeDShadow;
+	background-clip: content-box;
+}
+
+toolbarspacer[cui-areatype="menu-panel"] {
+	width: calc(22em / 3 - 0.1px);
+	height: calc(50px + 2em);
+	margin-top: 0px;
+	padding-top: calc(22px + 1em);
+}
+
+#main-window:not([customize-entered]) toolbarspacer[cui-areatype="menu-panel"],
+#main-window:not([customize-entered]) toolbarspring[cui-areatype="menu-panel"]{
+	opacity: 0;
+}
+
+toolbarpaletteitem[place="palette"] > :-moz-any(toolbarspring, toolbarspacer),
+#main-window[customize-entered] :-moz-any(toolbarspring, toolbarspacer):not([cui-areatype="menu-panel"]) {
+	background-color: white;
+	border: 1px solid rgba(0, 0, 0, 0.85);
+	margin: 3px;
+}
+
+#GiT-status-bar-container[cui-areatype="menu-panel"] {
+	max-width: calc(22.35em - 0.1px);
+	width: calc(22.35em - 0.1px);
+	min-height: 28px;
+	background-color: rgba(0,0,0,.1);
+	margin: 3px 0px;
+	border: 1px solid rgba(0,0,0,.05);
+	border-radius: 2px;
+}
+
+toolbarpaletteitem[place="palette"] > #GiT-status-bar-container,
+#main-window[customize-entered] #GiT-addon-bar #GiT-status-bar-container {
+	min-width: 60px;
+	margin: 3px;
+	padding: 0px;
+	background-color: rgba(255, 255, 255, 0.55);
+	box-shadow: 0 0 4px black inset;
+	background-image: repeating-linear-gradient(-70deg, transparent, transparent 15px, rgba(0,0,0,.2) 16px, rgba(0,0,0,.2) 30px, transparent 31px);
+}
+
+#customization-container {
+	-moz-box-orient: vertical !important;
+}
+
+#wrapper-GiT-special-spring {
+	order: -3;
+}
+
+#wrapper-GiT-special-spacer {
+	order: -2;
+}
+
+#wrapper-GiT-special-separator {
+	order: -1;
+}
+
+#customization-palette:not([hidden]) {
+	direction: ltr;
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+#customization-palatte > * {
+	direction: unset;
+}

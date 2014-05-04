@@ -1,0 +1,29 @@
+@import url("chrome://GiT-addonbar-global/skin/addonbar.css");
+
+#GiT-addon-bar {
+	min-height: 20px;
+	box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+#GiT-addon-bar[compact="true"] toolbarbutton {
+	-moz-appearance: none;
+	border: none;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1:not([disabled]):hover,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1[open],
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled]):hover {
+  background-image: linear-gradient(to top, transparent, rgba(0,0,0,.15)),
+                    linear-gradient(to top, transparent, rgba(0,0,0,.15) 30%),
+                    linear-gradient(to top, transparent, rgba(0,0,0,.15) 30%);
+  background-position: left, left, right;
+  background-size: auto, 1px 100%, 1px 100%;
+  background-repeat: no-repeat;
+}
+
+#status-bar {
+  min-height: 0;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+}

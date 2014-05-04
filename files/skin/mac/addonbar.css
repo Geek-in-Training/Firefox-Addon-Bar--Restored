@@ -1,0 +1,60 @@
+@import url("chrome://GiT-addonbar-global/skin/addonbar.css");
+
+#GiT-addon-bar {
+  min-height: 18px;
+}
+
+#GiT-addon-bar:not(:-moz-lwtheme) {
+  -moz-appearance: statusbar;
+}
+
+#GiT-status-bar-container {
+	padding-right: 4px;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-button,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1:not([type="menu-button"]),
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-button {
+  margin: 0;
+  padding: 0 1px;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1:not([type="menu-button"]),
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-button {
+  margin: 0;
+  padding: 0 1px;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1:not([type="menu-button"]):not([disabled]):not([open]):hover,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled]):hover,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1:not([disabled]):not([buttonover]):hover > .toolbarbutton-menubutton-dropmarker {
+  background-image: linear-gradient(transparent, rgba(0,0,0,.15));
+}
+
+#GiT-addon-bar[compact="true"] .toolbarbutton-1:not([type="menu-button"]):not([disabled]):hover:active,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1[type="menu"][open],
+#GiT-addon-bar[compact="true"] .toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled]):hover:active,
+#GiT-addon-bar[compact="true"] .toolbarbutton-1[open]:not([disabled]):hover > .toolbarbutton-menubutton-dropmarker {
+  background-image: linear-gradient(transparent, rgba(0,0,0,.3));
+}
