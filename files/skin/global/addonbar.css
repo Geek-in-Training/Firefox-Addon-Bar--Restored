@@ -21,6 +21,10 @@
   background-image: -moz-image-rect(url("chrome://global/skin/icons/close.png"), 0, 48, 16, 32);
 }
 
+#GiT-addon-bar #GiT-addon-bar-toggle-button:-moz-lwtheme {
+  background-image: -moz-image-rect(url("chrome://global/skin/icons/close.png"), 0, 64, 16, 48);
+}
+
 #GiT-addon-bar-toggle-button[cui-areatype="menu-panel"],
 toolbarpaletteitem[place="palette"] > #GiT-addon-bar-toggle-button {
 	list-style-image: url("chrome://GiT-addonbar-icons/skin/toggle32.png");
