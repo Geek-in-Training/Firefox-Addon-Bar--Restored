@@ -3,6 +3,10 @@
 	-moz-box-ordinal-group: 100000;
 }
 
+#print-preview-toolbar ~ #browser-bottombox #GiT-addon-bar {
+	display: none;
+}
+
 #GiT-addon-bar #GiT-addon-bar-toggle-button {
 	-moz-appearance: none;
 	width: 22px;
