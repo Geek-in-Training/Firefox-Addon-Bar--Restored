@@ -10,7 +10,6 @@
 <em:version>3.2</em:version>
 <em:type>2</em:type>
 <em:optionsURL>chrome://GiT-addonbar/content/settings.xul</em:optionsURL>
-<em:optionsType>2</em:optionsType>
 <em:bootstrap>true</em:bootstrap>
 <em:iconURL>chrome://GiT-addonbar-icons/skin/icon.png</em:iconURL>
 <em:targetApplication>

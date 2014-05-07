@@ -1,7 +1,17 @@
 <?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window [
+<!ENTITY % pageInfoDTD SYSTEM "chrome://browser/locale/pageInfo.dtd" >
+%pageInfoDTD;
+<!ENTITY % settingsDTD SYSTEM "chrome://GiT-addonbar/locale/settings.dtd" >
+%settingsDTD;
+] >
 
-<!DOCTYPE vbox SYSTEM "chrome://GiT-addonbar/locale/settings.dtd">
-
-<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <setting pref="extensions.GiTAddonBar.compactMode" type="bool" title="&compactMode;"/>
-</vbox>
+<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <prefpane id="general" label="&generalTab;">
+    <preferences>
+      <preference id="pref-compact" name="extensions.GiTAddonBar.compactMode" type="bool"/>
+    </preferences>
+    <checkbox label="&compactMode;" preference="pref-compact"/>
+  </prefpane>
+</prefwindow>
