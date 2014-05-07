@@ -51,14 +51,15 @@ var windowListener = {
 };
 
 function startup(aData, aReason) {
-	if (aReason === ADDON_ENABLE || aReason === ADDON_INSTALL || aReason === ADDON_UPGRADE) {
+	let version = (aData.oldVersion || "").replace(/[A-z]/g, "").split(".");
+	if (aReason === ADDON_ENABLE || aReason === ADDON_INSTALL
+			|| (aReason === ADDON_UPGRADE && parseInt(version[0]) <= 1 && parseInt(version[1]) <= 7) ) {
 		Application.prefs.setValue("extensions.GiTAddonBar.remigrate", true);
 	}
 	require("content/preferences.js").load();
 	require("content/statedui.js").load();
 
 	if (aReason === ADDON_UPGRADE) {
-		let version = aData.oldVersion.replace(/[A-z]/g, "").split(".");
 		if (parseInt(version[0]) <= 3 && parseInt(version[1]) <= 1) {
 			CustomizableUI.createWidget({id: "GiT-addon-bar-spring", type: "button"});
 			let placement = CustomizableUI.getPlacementOfWidget("GiT-addon-bar-spring");
