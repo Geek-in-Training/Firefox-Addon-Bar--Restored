@@ -7,7 +7,7 @@
 %settingsDTD;
 ] >
 
-<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<prefwindow id="GiTAddonBarPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <prefpane id="general" label="&generalTab;">
     <preferences>
       <preference id="pref-compact" name="extensions.GiTAddonBar.compactMode" type="bool"/>
