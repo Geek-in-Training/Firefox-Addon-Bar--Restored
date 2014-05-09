@@ -1,4 +1,6 @@
 const MODULE_VERSION = 1;
+var backstage = Cu.import("resource:///modules/CustomizableUI.jsm");
+Cu.import("resource://services-common/stringbundle.js");
 
 var listener = {
 	onWidgetAdded: function (id, area, position) {
@@ -18,17 +20,6 @@ var listener = {
 }
 
 exports.load = function () {
-	backstage.CustomizableUIInternal.registerArea("GiT-addon-bar", {
-		legacy: false,
-		type: CustomizableUI.TYPE_TOOLBAR,
-		defaultPlacements: [
-			"GiT-addon-bar-toggle-button",
-			"spring",
-			"GiT-status-bar-container"
-		],
-		defaultCollapsed: false
-	}, true);
-
 	let sb = new StringBundle("chrome://global/locale/customizeToolbar.properties");
 	let springName = sb.get("springTitle");
 	let spacerName = sb.get("spacerTitle");

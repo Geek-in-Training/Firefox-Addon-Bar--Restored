@@ -1,5 +1,5 @@
 /* UI stuff that doesn't need to be loaded per window */
-Cu.import("resource:///modules/CustomizableUI.jsm");
+var backstage = Cu.import("resource:///modules/CustomizableUI.jsm");
 Cu.import("resource://services-common/stringbundle.js");
 
 exports.load = function () {
