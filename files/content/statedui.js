@@ -51,11 +51,9 @@ exports.load = function () {
 			return item;
 		}
 	});
-	CustomizableUI.addListener(specialListener);
-}
+};
 
 exports.unload = function () {
-	CustomizableUI.removeListener(specialListener);
 
 	let listener = {
 		onWidgetBeforeDOMChange: function (node, nextNode, container, removing) {
