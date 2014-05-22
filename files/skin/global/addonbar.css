@@ -79,10 +79,12 @@ toolbarseparator[cui-areatype="menu-panel"] {
 }
 
 toolbarspacer[cui-areatype="menu-panel"] {
+	transform: scale(0.3);
 	width: calc(22em / 3 - 0.1px);
 	height: calc(50px + 2em);
 	margin-top: 0px;
 	padding-top: calc(22px + 1em);
+	outline-color: rgba(0,0,0,0.7);
 }
 
 #main-window:not([customize-entered]) toolbarspacer[cui-areatype="menu-panel"],
@@ -115,33 +117,4 @@ toolbarpaletteitem[place="palette"] > #GiT-status-bar-container,
 	background-color: rgba(255, 255, 255, 0.55);
 	box-shadow: 0 0 4px black inset;
 	background-image: repeating-linear-gradient(-70deg, transparent, transparent 15px, rgba(0,0,0,.2) 16px, rgba(0,0,0,.2) 30px, transparent 31px);
-}
-
-#customization-container {
-	-moz-box-orient: vertical !important;
-}
-
-#wrapper-GiT-special-spring {
-	order: -3;
-}
-
-#wrapper-GiT-special-spacer {
-	order: -2;
-}
-
-#wrapper-GiT-special-separator {
-	order: -1;
-}
-
-#customization-palette:not([hidden]) {
-	direction: ltr;
-	display: flex !important;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	align-content: flex-start;
-}
-
-#customization-palatte > * {
-	direction: unset;
 }
