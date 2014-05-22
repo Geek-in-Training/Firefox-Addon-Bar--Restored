@@ -1,5 +1,4 @@
 content  GiT-addonbar         content/
-content  GiT-modules          modules/
 skin     GiT-addonbar         classic/1.0 skin/linux/ os=Linux
 skin     GiT-addonbar         classic/1.0 skin/mac/ os=Darwin
 skin     GiT-addonbar         classic/1.0 skin/win/ os=WINNT
