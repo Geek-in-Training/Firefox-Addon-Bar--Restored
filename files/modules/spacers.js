@@ -73,6 +73,9 @@ function loadIntoWindow(window) {
 						onBuild: function (doc) {
 							let widget = that.createSpecialWidget(widgetId, doc);
 							widget.id = specialId;
+							if (widget.nodeName.search(/spacer/) === -1) {
+								widget.setAttribute("class", "panel-wide-item");
+							}
 							return widget;
 						}
 					});
@@ -159,6 +162,9 @@ exports.load = function () {
 					onBuild: function (doc) {
 						let widget = backstage.CustomizableUIInternal.createSpecialWidget(id, doc);
 						widget.id = id;
+						if (widget.nodeName.search(/spacer/) === -1) {
+							widget.setAttribute("class", "panel-wide-item");
+						}
 						return widget;
 					}
 				});
@@ -179,6 +185,12 @@ exports.unload = function () {
     let domWindow = windows.getNext().QueryInterface(Ci.nsIDOMWindow);
     unloadFromWindow(domWindow);
   }
+
+	backstage.gPlacements.get("PanelUI-contents").forEach(function (id) {
+		if (id.search(/^GiT-menu-special-widget/) !== -1) {
+			CustomizableUI.destroyWidget(id);
+		}
+	});
 
 	CustomizeMode.prototype.populatePalette = _populatePalette;
 	backstage.CustomizableUIInternal = _CustomizableUIInternal;
