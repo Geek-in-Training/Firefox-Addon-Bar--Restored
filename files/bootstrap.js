@@ -96,6 +96,7 @@ function shutdown(aData, aReason) {
 
 	require("content/preferences.js").unload();
 	require("content/statedui.js").unload();
+	require("modules/spacers.js").unload();
 
   let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
 
