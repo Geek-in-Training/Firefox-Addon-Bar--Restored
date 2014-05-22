@@ -7,13 +7,14 @@ Cu.import("resource:///modules/CustomizableUI.jsm");
 /* require -- based off of Erik Vold's require.js */
 (function(global) {
 	var modules = {};
-	global.require = function require(src) {
+	global.require = function require(src, root) {
 		if (modules[src])
 			return modules[src];
 		var scope = {require: global.require, Cu: global.Cu, Ci: global.Ci, Cc: global.Cc, exports: {}};
 		var tools = {};
+		root = root || __SCRIPT_URI_SPEC__;
 		Cu.import("resource://gre/modules/Services.jsm", tools);
-		var baseURI = tools.Services.io.newURI(__SCRIPT_URI_SPEC__, null, null);
+		var baseURI = tools.Services.io.newURI(root, null, null);
 		var uri = tools.Services.io.newURI(src, null, baseURI);
 		tools.Services.scriptloader.loadSubScript(uri.spec, scope);
 		return modules[src] = scope.exports || scope.module.exports;
@@ -58,6 +59,7 @@ function startup(aData, aReason) {
 	}
 	require("content/preferences.js").load();
 	require("content/statedui.js").load();
+	require("modules/spacers.js").load();
 
 	if (aReason === ADDON_UPGRADE) {
 		if (parseInt(version[0]) <= 3 && parseInt(version[1]) <= 1) {
@@ -94,6 +96,7 @@ function shutdown(aData, aReason) {
 
 	require("content/preferences.js").unload();
 	require("content/statedui.js").unload();
+	require("modules/spacers.js").unload();
 
   let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
 

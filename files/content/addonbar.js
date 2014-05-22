@@ -2,7 +2,9 @@ var window, document;
 Cu.import("resource://services-common/stringbundle.js");
 
 function getTBI(id) {
-	return document.getElementById(id) || window.gNavToolbox.palette.querySelector("#" + id);
+	try {
+		return document.getElementById(id) || window.gNavToolbox.palette.querySelector("#" + id);
+	} catch(e) {return null;}
 }
 
 exports = {
@@ -10,9 +12,7 @@ exports = {
 		window = win;
 		document = window.document;
 		this.initAddonbar();
-		this.makeCustomizable();
 		this.initToggle();
-		this.ensureSpecialWide();
 
 		document.getElementById("addon-bar")._delegatingToolbar = "GiT-addon-bar";
 
@@ -75,39 +75,6 @@ exports = {
 		key.addEventListener("command", this.toggleVisibility, false);
 		keyPlace.appendChild(keyset);
 	},
-	makeCustomizable: function () {
-		let toolbox = document.getElementById("navigator-toolbox");
-		toolbox.addEventListener("beforecustomization", this.beforeCustomizing, false);
-		toolbox.addEventListener("aftercustomization", this.afterCustomization, false);
-
-		let customizingView = document.getElementById("customization-container");
-		let extraHbox = document.createElement("hbox");
-		extraHbox.id = "GiT-addon-bar-extraHbox";
-		extraHbox.setAttribute("flex", "1");
-
-		Array.slice(customizingView.childNodes).forEach(function (node) {
-			extraHbox.appendChild(node);
-		});
-		customizingView.appendChild(extraHbox);
-	},
-	beforeCustomizing: function (e) {
-		let customizingView = document.getElementById("customization-container");
-		let addonbar = document.getElementById("GiT-addon-bar");
-		customizingView.appendChild(addonbar);
-	},
-	afterCustomization: function (e) {
-		let addonbar = document.getElementById("GiT-addon-bar");
-		document.getElementById("browser-bottombox").appendChild(addonbar);
-	},
-	ensureSpecialWide: function () {
-		let contents = document.getElementById("PanelUI-contents");
-		let items = Array.splice(contents.children);
-		items.forEach(function (item) {
-			if (item.id.search(/special-(spring|separator)/) !== -1) {
-				item.classList.add("panel-wide-item");
-			}
-		});
-	},
 	reMigrateItems: function (area) {
 		let shim = document.getElementById("addon-bar");
 		let items = shim.getMigratedItems();
@@ -158,18 +125,6 @@ exports = {
 			.splice(window.gNavToolbox.externalToolbars.indexOf(addonbar), 1);
 		addonbar.parentElement.removeChild(addonbar);
 		window.removeEventListener("unload", this.onUnload, false);
-
-		let toolbox = document.getElementById("navigator-toolbox");
-		toolbox.removeEventListener("beforecustomization", this.beforeCustomizing);
-		toolbox.removeEventListener("aftercustomization", this.afterCustomization);
-
-		let customizingView = document.getElementById("customization-container");
-		let extraHbox = document.getElementById("GiT-addon-bar-extraHbox");
-
-		Array.slice(extraHbox.childNodes).forEach(function (node) {
-			customizingView.appendChild(node);
-		});
-		customizingView.removeChild(extraHbox);
 
 		window.GiTAddonBarStylesheet.parentNode
 			.removeChild(window.GiTAddonBarStylesheet);
