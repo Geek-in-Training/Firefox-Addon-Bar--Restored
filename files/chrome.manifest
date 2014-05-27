@@ -7,6 +7,7 @@ skin     GiT-addonbar-icons   classic/1.0 skin/icons/
 locale   GiT-addonbar         en-US locale/en-US/
 locale   GiT-addonbar         bg-BG locale/bg-BG/
 locale   GiT-addonbar         de locale/de/
+locale   GiT-addonbar         es locale/es/
 locale   GiT-addonbar         fr locale/fr/
 locale   GiT-addonbar         nl locale/nl/
 locale   GiT-addonbar         pl locale/pl/
