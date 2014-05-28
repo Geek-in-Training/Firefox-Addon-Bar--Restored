@@ -48,6 +48,10 @@ exports.load = function () {
 			let statusbar = doc.getElementById("status-bar") ||
 					palette.querySelector("status-bar");
 			item.appendChild(statusbar);
+			/* ensure status-bar placement */
+			doc.defaultView.setTimeout(function () {
+				item.appendChild(statusbar);
+			}, 210);
 			return item;
 		}
 	});
