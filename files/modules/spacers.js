@@ -63,9 +63,15 @@ function loadIntoWindow(window) {
 			backstage.CustomizableUIInternal.addWidgetToArea = function (widgetId, area, position, initialAdd) {
 				if (area === "PanelUI-contents" &&
 						this.isSpecialWidget(widgetId)) {
-					let count = (backstage.gPlacements.get("PanelUI-contents").join(",")
-											 .match(/GiT-menu-special-widget/g) || []).length;
-					let specialId = "GiT-menu-special-widget" + widgetId + count;
+					let specialWidgets = backstage.gPlacements.get("PanelUI-contents").join(",")
+															 .match(/GiT-menu-special-widget(spring|spacer|separator)\d+/g).join(",");
+					let uniqueCount = (specialWidgets || "0")
+														.replace(/[^\d,]+(\d+)/g, "$1").split(",")
+                            .sort(function (a,b) {
+                              return parseInt(a) > parseInt(b);
+                            }).pop();
+          uniqueCount = parseInt(uniqueCount) + 1;
+					let specialId = "GiT-menu-special-widget" + widgetId + uniqueCount;
 					let that = this;
 					this.createWidget({
 						id: specialId,
@@ -173,7 +179,7 @@ exports.load = function () {
 	}
 
 	CustomizableUI.addListener(specialWidgetListener);
-}
+};
 
 exports.unload = function () {
 	let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
@@ -195,4 +201,4 @@ exports.unload = function () {
 	CustomizeMode.prototype.populatePalette = _populatePalette;
 	backstage.CustomizableUIInternal = _CustomizableUIInternal;
 	CustomizableUI.removeListener(specialWidgetListener);
-}
+};
