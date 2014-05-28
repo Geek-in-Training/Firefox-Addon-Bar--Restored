@@ -53,8 +53,8 @@ var windowListener = {
 
 function startup(aData, aReason) {
 	let version = (aData.oldVersion || "").replace(/[A-z]/g, "").split(".");
-	if (aReason === ADDON_ENABLE || aReason === ADDON_INSTALL
-			|| (aReason === ADDON_UPGRADE && parseInt(version[0]) <= 1 && parseInt(version[1]) <= 7) ) {
+	if (aReason === ADDON_ENABLE || aReason === ADDON_INSTALL ||
+			(aReason === ADDON_UPGRADE && parseInt(version[0]) <= 1 && parseInt(version[1]) <= 7) ) {
 		Application.prefs.setValue("extensions.GiTAddonBar.remigrate", true);
 	}
 	require("content/preferences.js").load();
