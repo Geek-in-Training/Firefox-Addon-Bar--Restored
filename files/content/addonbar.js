@@ -62,18 +62,15 @@ exports = {
 		window.addEventListener("unload", this.onUnload, false);
 	},
 	initToggle: function () {
-		let keyset = document.createElement("keyset");
 		let key = document.createElement("key");
-		let keyPlace = document.getElementById("mainKeyset").parentElement;
+		let mainKeyset = document.getElementById("mainKeyset");
 
-		keyset.id = "GiT-addon-bar-keyset";
 		key.id = "GiT-addon-bar-togglekey";
-		keyset.appendChild(key);
 		key.setAttribute("key", "/");
 		key.setAttribute("modifiers", "accel");
 		key.setAttribute("oncommand", "void(0)");
 		key.addEventListener("command", this.toggleVisibility, false);
-		keyPlace.appendChild(keyset);
+		mainKeyset.insertBefore(key, mainKeyset.firstChild);
 	},
 	reMigrateItems: function (area) {
 		let shim = document.getElementById("addon-bar");
@@ -112,7 +109,6 @@ exports = {
 			window.Application.prefs.setValue("extensions.GiTAddonBar.undoRemigrate", false);
 		}
 
-		let keyset = document.getElementById("GiT-addon-bar-keyset");
 		let key = document.getElementById("GiT-addon-bar-togglekey");
 		let addonbar = document.getElementById("GiT-addon-bar");
 		let shim = document.getElementById("addon-bar");
@@ -120,7 +116,7 @@ exports = {
 		shim.setAttribute("toolbar-delegate", "nav-bar");
 		shim._delegatingToolbar = "nav-bar";
 		key.removeEventListener("command", this.toggleVisibility);
-		keyset.parentElement.removeChild(keyset);
+		key.parentElement.removeChild(key);
 		window.gNavToolbox.externalToolbars
 			.splice(window.gNavToolbox.externalToolbars.indexOf(addonbar), 1);
 		addonbar.parentElement.removeChild(addonbar);
