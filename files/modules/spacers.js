@@ -52,24 +52,26 @@ function loadIntoWindow(window) {
 
     if (!backstageReady) {
       (function(){
-        let obj = {};
+        let temp = {};
         for (let x in backstage.CustomizableUIInternal) {
           if (backstage.CustomizableUIInternal.hasOwnProperty(x)) {
-            obj[x] = backstage.CustomizableUIInternal[x];
+            temp[x] = backstage.CustomizableUIInternal[x];
           }
         }
-        backstage.CustomizableUIInternal = obj;
+        backstage.CustomizableUIInternal = temp;
       })();
       backstage.CustomizableUIInternal.addWidgetToArea = function (widgetId, area, position, initialAdd) {
         if (area === "PanelUI-contents" &&
             this.isSpecialWidget(widgetId)) {
           let specialWidgets = backstage.gPlacements.get("PanelUI-contents").join(",")
-          .match(/GiT-menu-special-widget(spring|spacer|separator)\d+/g).join(",");
+              .match(/GiT-menu-special-widget(spring|spacer|separator)\d+/g);
+          specialWidgets = (specialWidgets) ? specialWidgets.join : null;
           let uniqueCount = (specialWidgets || "0")
-          .replace(/[^\d,]+(\d+)/g, "$1").split(",")
-          .sort(function (a,b) {
-            return parseInt(a) > parseInt(b);
-          }).pop();
+              .replace(/[^\d,]+(\d+)/g, "$1").split(",")
+              .sort(function (a,b) {
+                return parseInt(a) > parseInt(b);
+              }).pop();
+
           uniqueCount = parseInt(uniqueCount) + 1;
           let specialId = "GiT-menu-special-widget" + widgetId + uniqueCount;
           let that = this;
